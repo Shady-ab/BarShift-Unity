@@ -12,6 +12,16 @@ public enum BarGameState
 
 public class BarGameController : MonoBehaviour
 {
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    private static void Bootstrap()
+    {
+        if (FindFirstObjectByType<BarGameController>() == null)
+        {
+            GameObject root = new GameObject("BarShift Game");
+            root.AddComponent<BarGameController>();
+        }
+    }
+
     private const string BestShiftKey = "BarShift_BestEarnings";
 
     private BarUI ui;
