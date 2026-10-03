@@ -39,7 +39,7 @@ public static class IngredientInfo
             case IngredientType.Pineapple: return new Color(0.97f, 0.72f, 0.22f);
             case IngredientType.Strawberry: return new Color(0.91f, 0.25f, 0.36f);
             case IngredientType.Soda: return new Color(0.58f, 0.82f, 0.94f);
-            default: return Color.white;
+            default: return UnityEngine.Color.white;
         }
     }
 }
