@@ -26,8 +26,10 @@ jobs:
 
       - name: Download CC0 bar props
         run: |
-          curl -L --fail -o Assets/Resources/Models/Bar/soda-bottle.fbx "https://raw.githubusercontent.com/series-ai/jam-ready-assets/main/kenney-food-kit/3D/food/Models/FBX%20format/soda-bottle.fbx"
-          curl -L --fail -o Assets/Resources/Models/Bar/glass.fbx "https://raw.githubusercontent.com/series-ai/jam-ready-assets/main/kenney-food-kit/3D/food/Models/FBX%20format/glass.fbx"
+          curl -L --fail -o Assets/Resources/Models/Bar/soda-bottle.obj "https://raw.githubusercontent.com/gabeochoa/pharmasea/main/resources/models/kennynl/sodaBottle.obj"
+          curl -L --fail -o Assets/Resources/Models/Bar/soda-bottle.mtl "https://raw.githubusercontent.com/gabeochoa/pharmasea/main/resources/models/kennynl/sodaBottle.mtl"
+          curl -L --fail -o Assets/Resources/Models/Bar/glass.obj "https://raw.githubusercontent.com/gabeochoa/pharmasea/main/resources/models/kennynl/sodaGlass.obj"
+          curl -L --fail -o Assets/Resources/Models/Bar/glass.mtl "https://raw.githubusercontent.com/gabeochoa/pharmasea/main/resources/models/kennynl/sodaGlass.mtl"
 
       - name: Upload assets
         uses: actions/upload-artifact@v4
