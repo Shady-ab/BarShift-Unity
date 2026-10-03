@@ -1,0 +1,37 @@
+name: Fetch BarShift Assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch-bar-assets.yml'
+  workflow_dispatch:
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare folders
+        run: |
+          mkdir -p Assets/Resources/Models/Characters/Animations
+          mkdir -p Assets/Resources/Models/Characters/Skins
+          mkdir -p Assets/Resources/Models/Bar
+
+      - name: Download CC0 character assets
+        run: |
+          curl -L --fail -o Assets/Resources/Models/Characters/characterMedium.fbx "https://raw.githubusercontent.com/sinanata/unity-3d-to-sprite-baker/main/Assets/Demo/Resources/Models/characterMedium.fbx"
+          curl -L --fail -o Assets/Resources/Models/Characters/Animations/idle.fbx "https://raw.githubusercontent.com/sinanata/unity-3d-to-sprite-baker/main/Assets/Demo/Resources/Models/Animations/idle.fbx"
+          curl -L --fail -o Assets/Resources/Models/Characters/Animations/jump.fbx "https://raw.githubusercontent.com/sinanata/unity-3d-to-sprite-baker/main/Assets/Demo/Resources/Models/Animations/jump.fbx"
+          curl -L --fail -o Assets/Resources/Models/Characters/Skins/skaterMaleA.png "https://raw.githubusercontent.com/sinanata/unity-3d-to-sprite-baker/main/Assets/Demo/Resources/Models/Skins/skaterMaleA.png"
+          curl -L --fail -o Assets/Resources/Models/Characters/Skins/skaterFemaleA.png "https://raw.githubusercontent.com/sinanata/unity-3d-to-sprite-baker/main/Assets/Demo/Resources/Models/Skins/skaterFemaleA.png"
+
+      - name: Download CC0 bar props
+        run: |
+          curl -L --fail -o Assets/Resources/Models/Bar/soda-bottle.fbx "https://raw.githubusercontent.com/series-ai/jam-ready-assets/main/kenney-food-kit/3D/food/Models/FBX%20format/soda-bottle.fbx"
+          curl -L --fail -o Assets/Resources/Models/Bar/glass.fbx "https://raw.githubusercontent.com/series-ai/jam-ready-assets/main/kenney-food-kit/3D/food/Models/FBX%20format/glass.fbx"
+
+      - name: Upload assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: barshift-ready-assets
+          path: Assets/Resources/Models
+          if-no-files-found: error
